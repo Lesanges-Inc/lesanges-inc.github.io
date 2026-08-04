@@ -16,6 +16,51 @@
   }
 })();
 
+/* システム画面リール: 画面幅が埋まるまで並べ、全体を2周分に複製して継ぎ目のない無限スクロールにする。
+   画像を足すときは index.html の .reel-track に <figure class="reel-item"> を追記するだけでよい */
+(function(){
+  var reels = [];
+  document.querySelectorAll('.reel-track').forEach(function(track){
+    var base = Array.prototype.slice.call(track.children).map(function(el){ return el.cloneNode(true); });
+    if(base.length) reels.push({ track:track, base:base });
+  });
+  if(!reels.length) return;
+
+  function append(r, el, hidden){
+    var node = el.cloneNode(true);
+    if(hidden){
+      node.setAttribute('aria-hidden','true');
+      var img = node.querySelector('img');
+      if(img) img.setAttribute('alt','');
+    }
+    r.track.appendChild(node);
+  }
+
+  function build(r){
+    var box = r.track.parentElement;
+    r.track.textContent = '';
+    r.base.forEach(function(el){ append(r, el, false); });
+    // 1周分がコンテナ幅を超えるまでセットを足す(右端に空白が出ないように)
+    var guard = 0;
+    while(r.track.scrollWidth < box.clientWidth && guard++ < 12){
+      r.base.forEach(function(el){ append(r, el, true); });
+    }
+    // いまの並びをもう一度繰り返して2周分にする(-50%でちょうど1周)
+    var count = r.track.children.length;
+    for(var i = 0; i < count; i++){ append(r, r.track.children[i], true); }
+    // 枚数が増えても流れる速さが変わらないように、幅から再生時間を出す(約26px/秒)
+    r.track.style.animationDuration = Math.max(20, Math.round(r.track.scrollWidth / 2 / 26)) + 's';
+  }
+
+  reels.forEach(build);
+  window.addEventListener('load', function(){ reels.forEach(build); });
+  var timer;
+  window.addEventListener('resize', function(){
+    clearTimeout(timer);
+    timer = setTimeout(function(){ reels.forEach(build); }, 250);
+  });
+})();
+
 /* .reveal のスクロール出現 */
 (function(){
   if(!('IntersectionObserver' in window)){document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in');});return;}

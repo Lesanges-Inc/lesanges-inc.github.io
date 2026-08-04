@@ -19,6 +19,13 @@
 </div></header>
 
 <div class="hero">
+  <div class="hero-media" aria-hidden="true">
+    <!-- 動画を使う場合は、hero.mp4 と img_hero.jpg を置いて下のコメントを外す(写真は動画の待ち受け画像になります)
+    <video autoplay muted loop playsinline poster="img_hero.jpg">
+      <source src="hero.mp4" type="video/mp4">
+    </video>
+    -->
+  </div>
   <div class="hero-panel glass">
     <span class="fr">Lesanges</span>
     <h1>美しい仕組みは、<br>人を自由にする。</h1>
@@ -46,20 +53,16 @@
   <div class="wrap">
     <p class="sec-label">Service</p>
     <h2 class="sec-title">御社だけの仕組みを、誂える。</h2>
-    <div class="svc">
-      <a class="card glass reveal" href="service.html#calendar">
-        <img src="img_svc_calendar.jpg" alt="社内専用カレンダーの画面" loading="lazy">
-        <div class="body"><h3>社内専用カレンダー</h3><p class="price">月額5万円</p><p class="desc">全員の空き時間を一瞬で見つけて、そのまま予定作成。プライベートは時間帯だけ見える設計。</p></div>
-      </a>
-      <a class="card glass reveal" href="service.html#sales" style="transition-delay:.1s;">
-        <img src="img_svc_sales.jpg" alt="営業管理システムの画面" loading="lazy">
-        <div class="body"><h3>営業管理システム</h3><p class="price">月額15万円</p><p class="desc">訪問からアポ・商談・成約・売上まで一目瞭然。わからないことはAIに日本語で質問。</p></div>
-      </a>
-      <a class="card glass reveal" href="service.html#secretary" style="transition-delay:.2s;">
-        <img src="img_svc_secretary.jpg" alt="AI秘書の画面" loading="lazy">
-        <div class="body"><h3>AI秘書</h3><p class="price">月額5万円</p><p class="desc">毎朝のレポート、新幹線の手配、議事録の管理まで。チャットひとつで動く秘書です。</p></div>
-      </a>
+  </div>
+  <!-- 稼働中システムの画面。画像を増やすときは .reel-track に <figure class="reel-item"> を足すだけ -->
+  <div class="reel reveal" aria-label="実際に稼働しているシステムの画面">
+    <div class="reel-track">
+      <figure class="reel-item"><img src="img_svc_calendar.jpg" width="340" height="390" alt="社内専用カレンダーの画面"></figure>
+      <figure class="reel-item"><img src="img_svc_sales.jpg" width="340" height="390" alt="営業管理システムの画面"></figure>
+      <figure class="reel-item"><img src="img_svc_secretary.jpg" width="340" height="390" alt="AI秘書の画面"></figure>
     </div>
+  </div>
+  <div class="wrap">
     <p class="svc-more reveal"><a class="btn ghost" href="https://lesanges-inc.github.io/marugoto-ai/">まるごとAI サービスサイトへ</a></p>
   </div>
 </section>
