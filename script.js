@@ -16,6 +16,36 @@
   }
 })();
 
+/* 携帯のメニュー開閉。リンクを押す・外側を押す・Escで閉じる */
+(function(){
+  var btn = document.querySelector('.gnav-toggle');
+  var menu = document.getElementById('gnav-menu');
+  if(!btn || !menu) return;
+
+  function set(open){
+    menu.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
+  }
+  btn.addEventListener('click', function(e){
+    e.stopPropagation();
+    set(!menu.classList.contains('open'));
+  });
+  menu.addEventListener('click', function(e){
+    if(e.target.closest('a')) set(false);
+  });
+  document.addEventListener('click', function(e){
+    if(menu.classList.contains('open') && !menu.contains(e.target) && !btn.contains(e.target)) set(false);
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && menu.classList.contains('open')){ set(false); btn.focus(); }
+  });
+  /* 横向きにしてPC幅になったときに開いたままにしない */
+  window.addEventListener('resize', function(){
+    if(window.innerWidth > 820) set(false);
+  });
+})();
+
 /* 動きを減らす設定の端末では、ヒーロー動画を止めてポスター画像だけを見せる */
 (function(){
   var v = document.querySelector('.hero-media video');
