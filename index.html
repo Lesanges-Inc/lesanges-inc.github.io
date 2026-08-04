@@ -20,11 +20,11 @@
 
 <div class="hero">
   <div class="hero-media" aria-hidden="true">
-    <!-- 動画を使う場合は、hero.mp4 と img_hero.jpg を置いて下のコメントを外す(写真は動画の待ち受け画像になります)
-    <video autoplay muted loop playsinline poster="img_hero.jpg">
+    <!-- 名古屋の街並み。快晴の部分を往復再生にしてあるので継ぎ目なくループする -->
+    <video autoplay muted loop playsinline preload="auto" poster="img_hero.jpg">
       <source src="hero.mp4" type="video/mp4">
+      <source src="hero.webm" type="video/webm">
     </video>
-    -->
   </div>
   <div class="hero-panel glass">
     <span class="fr">Lesanges</span>
@@ -54,14 +54,14 @@
     <p class="sec-label">Service</p>
     <h2 class="sec-title">御社だけの仕組みを、誂える。</h2>
   </div>
-  <!-- 稼働中システムの画面。画像を増やすときは .reel-track に <figure class="reel-item"> を足すだけ。
-       img_svc_dashboard.jpg は実機画面をHTMLで再現して書き出したもの(他3枚は実機のスクリーンショット)。
-       実機のスクリーンショットが用意できたら同名で差し替えれば置き換わる -->
+  <!-- 稼働中システムの実機画面。画像を増やすときは .reel-track に <figure class="reel-item"> を足すだけ。
+       width/height は画像の実寸を入れる(読み込み前のレイアウトのガタつきを防ぐため) -->
   <div class="reel reveal" aria-label="実際に稼働しているシステムの画面">
     <div class="reel-track">
-      <figure class="reel-item"><img src="img_svc_calendar.jpg" width="340" height="390" alt="社内専用カレンダーの画面"></figure>
-      <figure class="reel-item"><img src="img_svc_dashboard.jpg" width="640" height="480" alt="営業ダッシュボードの画面"></figure>
-      <figure class="reel-item"><img src="img_svc_sales.jpg" width="340" height="390" alt="営業管理システムの画面"></figure>
+      <figure class="reel-item"><img src="img_svc_calendar.jpg" width="340" height="390" alt="社内専用カレンダーで空き時間を検索した画面"></figure>
+      <figure class="reel-item"><img src="img_svc_map.jpg" width="848" height="480" alt="営業管理システムの訪問マップ画面"></figure>
+      <figure class="reel-item"><img src="img_svc_line.jpg" width="413" height="480" alt="LINEのカレンダーBotが送る本日の予定"></figure>
+      <figure class="reel-item"><img src="img_svc_sales.jpg" width="340" height="390" alt="営業管理システムの分析画面"></figure>
       <figure class="reel-item"><img src="img_svc_secretary.jpg" width="340" height="390" alt="AI秘書が毎朝送るレポートの画面"></figure>
     </div>
   </div>
