@@ -71,13 +71,14 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--ink);outline-offset
 }
 .hero-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
 @keyframes heroZoom{from{transform:scale(1.02);}to{transform:scale(1.12);}}
-/* 空はできるだけ見せ、細かい街並みが乗る下半分は強めに沈めて文字を読みやすくする。
-   最下部はページ背景と同じ色に寄せて、次のセクションへ自然につなぐ */
+/* 夕景の色を残したいのでスクリムは control 最小限に。文字はガラスパネルの上か
+   影付きなので、ここを薄くしても読めなくならない。最下部だけはページ背景の色に
+   寄せて次のセクションへつなぐ */
 .hero::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
   background:
-    linear-gradient(180deg,rgba(234,244,252,.46) 0%,rgba(234,244,252,.14) 42%,
-                    rgba(234,244,252,.6) 80%,rgba(234,244,252,.9) 100%),
-    radial-gradient(120% 90% at 50% 46%, transparent 38%, rgba(234,244,252,.4) 100%);
+    linear-gradient(180deg,rgba(234,244,252,.24) 0%,rgba(234,244,252,.05) 42%,
+                    rgba(234,244,252,.38) 80%,rgba(234,244,252,.78) 100%),
+    radial-gradient(120% 90% at 50% 46%, transparent 42%, rgba(234,244,252,.26) 100%);
 }
 .petals{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:1;}
 .petal{position:absolute;top:-8%;color:var(--gold);animation:fall linear infinite;}
@@ -87,11 +88,13 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--ink);outline-offset
   100%{transform:translateY(115vh) translateX(8vw) rotate(320deg);}
 }
 .hero-panel{position:relative;z-index:2;max-width:660px;text-align:center;padding:62px 48px 54px;animation:heroIn 1.1s .15s cubic-bezier(.2,.7,.2,1) both;}
-/* 背景が動画になったぶん、.glass より白を強めてぼかしを深くする(文字を読みやすく保つため) */
+/* 背景が動画になったぶん、.glass より白を強めてぼかしを深くする。
+   スクリムを薄くしてあるので、昼から薄暮・夕焼けまで背景が変わっても
+   ここで文字の下地を確保する */
 .hero-panel.glass{
-  background:linear-gradient(125deg, rgba(255,255,255,.74) 0%, rgba(255,255,255,.58) 46%, rgba(255,255,255,.68) 100%);
-  backdrop-filter:blur(32px) saturate(1.22);
-  -webkit-backdrop-filter:blur(32px) saturate(1.22);
+  background:linear-gradient(125deg, rgba(255,255,255,.8) 0%, rgba(255,255,255,.68) 46%, rgba(255,255,255,.76) 100%);
+  backdrop-filter:blur(34px) saturate(1.2);
+  -webkit-backdrop-filter:blur(34px) saturate(1.2);
 }
 @keyframes heroIn{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:none;}}
 .hero-panel .fr{font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:.52em;color:var(--gold);text-transform:uppercase;display:block;margin-bottom:20px;}
