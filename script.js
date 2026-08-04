@@ -16,6 +16,19 @@
   }
 })();
 
+/* 動きを減らす設定の端末では、ヒーロー動画を止めてポスター画像だけを見せる */
+(function(){
+  var v = document.querySelector('.hero-media video');
+  if(!v) return;
+  var mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+  function apply(){
+    if(mq.matches){ v.pause(); v.removeAttribute('autoplay'); }
+    else { var p = v.play(); if(p && p.catch) p.catch(function(){}); }
+  }
+  apply();
+  if(mq.addEventListener) mq.addEventListener('change', apply);
+})();
+
 /* システム画面リール: 画面幅が埋まるまで並べ、全体を2周分に複製して継ぎ目のない無限スクロールにする。
    画像を足すときは index.html の .reel-track に <figure class="reel-item"> を追記するだけでよい */
 (function(){
